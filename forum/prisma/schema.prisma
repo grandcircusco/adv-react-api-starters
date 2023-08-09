@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Question {
+  id          Int      @id @default(autoincrement())
+  title       String   @unique
+  description String
+  tags        String[]
+  answers     Answer[]
+  votes       Int
+  createdAt   DateTime @default(now())
+}
+
+model Answer {
+  id          Int      @id @default(autoincrement())
+  question    Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  questionId  Int
+  title       String   @unique
+  description String
+  votes       Int
+  createdAt   DateTime @default(now())
+}
