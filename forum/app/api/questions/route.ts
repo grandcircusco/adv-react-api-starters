@@ -5,9 +5,7 @@ export async function GET(request: Request) {
   const params = new URL(request.url).searchParams;
   const searchTerm = params.get("searchTerm");
   const tags = params.get("tags")?.split(","); // sent in as "...&tags=jokes,literature"
-  let data = await prisma.question.findMany({
-    orderBy: [{ createdAt: "desc" }],
-  });
+  let data;
   if (searchTerm && tags) {
     data = await prisma.question.findMany({
       where: {
@@ -32,6 +30,10 @@ export async function GET(request: Request) {
   } else if (tags) {
     data = await prisma.question.findMany({
       where: { tags: { hasEvery: tags } },
+      orderBy: [{ createdAt: "desc" }],
+    });
+  } else {
+    data = await prisma.question.findMany({
       orderBy: [{ createdAt: "desc" }],
     });
   }
