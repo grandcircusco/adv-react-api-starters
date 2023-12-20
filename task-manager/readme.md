@@ -1,4 +1,24 @@
 # Task Manager API
+Sample Project:
+```json
+{
+  "id": 1,
+  "title": "Build Rome",
+  "dueDate": "2023-08-11",
+  "createdAt": "2023-08-10T14:07:55.109Z"
+}
+```
+
+Sample Task:
+```json
+{
+  "id": 1,
+  "projectId": 1,
+  "description": "lay foundation",
+  "status": "COMPLETE",
+  "createdAt": "2023-08-10T14:09:01.013Z"
+}
+```
 
 Here are the endpoints provided:
 

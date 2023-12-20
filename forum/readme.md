@@ -1,4 +1,31 @@
 # Forum API
+Sample Question:
+```json
+{
+  "id": 3,
+  "title": "Just why?",
+  "description": "Can anyone tell me why?",
+  "tags": [
+    "metaphysics",
+    "language"
+  ],
+  "votes": 100,
+  "createdAt": "2023-08-07T18:00:56.270Z"
+}
+```
+
+Sample Answer:
+```json
+{
+  "id": 3,
+  "questionId": 3,
+  "title": "Because",
+  "description": "just because",
+  "votes": -2,
+  "createdAt": "2023-08-07T18:00:56.347Z"
+}
+```
+
 Here are the endpoints provided:
 
 ## `GET /api/questions`
